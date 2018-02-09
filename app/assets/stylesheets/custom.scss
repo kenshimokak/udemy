@@ -17,7 +17,10 @@
 
 .jumbotron {
 	background-image: asset-url('new_cover_page.png');
-	height: 400px;
+}
+
+.bg-none {
+	background-image: none;
 }
 
 .jumbotron h1{
@@ -27,10 +30,15 @@
 }
 
 footer {
-	margin-top: 40px;
 	padding-top: 5px;
 	border-top: 1px solid #eaeaea;
-	color: #777;
+	color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    text-align: center;	
 }
 
 footer a:hover {
