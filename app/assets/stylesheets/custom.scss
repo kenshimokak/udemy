@@ -30,7 +30,7 @@
 }
 
 footer {
-	padding-top: 5px;
+	padding-top: 10px;
 	border-top: 1px solid #eaeaea;
 	color: #fff;
     position: fixed;
@@ -58,3 +58,42 @@ footer ul li {
 	float: left;
 	margin-left: 15px;
 }
+
+
+//-------------- Scaffold ----------------------------
+
+.field_with_errors {
+  padding: 2px;
+  input, textarea {
+    border-color: red
+  }  
+}
+
+#error_explanation {
+  border: 1px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px -7px 0;
+    background-color: #c00;
+    color: #fff;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+label {
+  display: block;
+}
+
+//-------------- End Scaffold ----------------------------
