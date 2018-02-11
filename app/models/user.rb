@@ -13,10 +13,12 @@ class User < ApplicationRecord
 			  uniqueness: { case_sensitive: false },
 			  format: { with: VALID_EMAIL_REGEX }
 
+    has_secure_password 
+
 	private 
 		def dowancase_fields
 			self.username.downcase!
-			self.email.dowancase!
+			self.email.downcase!
 		end
 
 end
