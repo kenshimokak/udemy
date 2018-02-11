@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 	has_many :comments
-	has_many :acticles
+	has_many :articles
 	
 	before_save :dowancase_fields
 

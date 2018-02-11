@@ -1,14 +1,27 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<%= render 'shared/notice' %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<h1>Welcome to <%= @user.username.capitalize %> profile</h1>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="jumbotron bg-none">
+  <div class="float-right">
+  	<%= gravatar_for @user, size: 130 %>
+  </div>
+  <p class="text-dark">
+	  <strong>Username:</strong>
+	  <%= @user.username %>
+  </p>
+  <p class="lead">
+  	<strong>Email:</strong>
+  	<%= @user.email %>
+  </p>  
+	
+	<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-sm btn-primary" %> 
+	<%= link_to 'Back', users_path, class: "btn btn-sm btn-info" %>  
+	<%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>	
+</div>
+
+<% if @user.articles.any? %>
+	<h3>Lists of articles which created by <strong>"<%= @user.username.capitalize %>"</strong></h3>
+	<%= render 'articles/article', obj: @user.articles %>
+<% end %>
