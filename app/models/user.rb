@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 	has_many :comments
-
+	has_many :acticles
+	
 	before_save :dowancase_fields
 
 	validates :username, presence: true,
@@ -15,6 +16,7 @@ class User < ApplicationRecord
 	private 
 		def dowancase_fields
 			self.username.downcase!
+			self.email.dowancase!
 		end
 
 end
