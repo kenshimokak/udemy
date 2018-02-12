@@ -1,8 +1,18 @@
 <%= render 'shared/notice' %>
 <div class="jumbotron bg-none">
-  <h1 class="display-4 text-dark">
+  <div class="float-right">
+  	<div class="row ml-2">
+  		<a href="<%= user_path(@article.user) %>">
+  			<ul class="no-style text-center">
+  				<li><%= gravatar_for @article.user, size: 120 %></li>
+  				<li class="text-primary"><%= @article.user.username.capitalize %></li>
+  			</ul>
+  		</a>
+  	</div>
+  </div>  	
+  <h3 class="text-dark">
 	  <%= @article.title.capitalize %>  	
-  </h1>
+  </h3>
   <p class="lead">
   	<%= simple_format(@article.description.capitalize) %>  
   </p>  
