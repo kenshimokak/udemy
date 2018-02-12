@@ -11,11 +11,13 @@
             Last updated: <%= time_ago_in_words(article.updated_at) %> ago
           </small> 
           </p>
+          <% if logged_in? && current_user == article.user %>
           <p>
             <%= link_to 'Show', article, class: "btn btn-sm btn-info" %>          
             <%= link_to 'Edit', edit_article_path(article), class: "btn btn-sm btn-success" %>
             <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>          
           </p>
+          <% end %>
         </div>
       </div>    
       <br/>
