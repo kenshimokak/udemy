@@ -23,5 +23,6 @@
 
 <% if @user.articles.any? %>
 	<h3>Lists of articles which created by <strong>"<%= @user.username.capitalize %>"</strong></h3>
-	<%= render 'articles/article', obj: @user.articles %>
+  <%= will_paginate @user_articles %>
+	<%= render 'articles/article', obj: @user_articles %>
 <% end %>

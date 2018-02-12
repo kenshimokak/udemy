@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # if not working on windows just add  cmd: gem install bcrypt-ruby --platform=ruby
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+gem 'will_paginate', '3.1.5'
+gem 'will_paginate-bootstrap4'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -4,6 +4,8 @@
 
 <h1>Lists of Users</h1>
 
+<%= will_paginate %>
+
 <% @users.each do |user| %>
   <div class="card w-100">
     <div class="card-body">
@@ -28,4 +30,4 @@
   </div> <br>
 <% end %>
 
-
+<%= will_paginate %>
