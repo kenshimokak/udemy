@@ -1,6 +1,6 @@
 <%= render 'shared/notice' %>
 
-<%= link_to 'Create User', new_user_path, class: "btn btn-sm btn-success" if current_user.admin? %>
+<%= link_to 'Create User', new_user_path, class: "btn btn-sm btn-success" if is_admin? %>
 
 <h1>Lists of Users</h1>
 
@@ -21,7 +21,7 @@
         <%= user.email %>
       </div> 
     </div>
-    <% if logged_in? && current_user.admin? %>
+    <% if logged_in? && is_admin? %>
       <div class="card-footer">
         <%= link_to 'Show', user, class: "btn btn-sm btn-info" %>
         <%= link_to 'Edit', edit_user_path(user), class: "btn btn-sm btn-primary" %>
