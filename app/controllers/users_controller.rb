@@ -30,7 +30,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to articles_path, notice: "#{@user.username} was successfully logged." }
+        session[:user_id] = @user.id
+        format.html { redirect_to user_path(@user), notice: "#{@user.username} was successfully logged." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

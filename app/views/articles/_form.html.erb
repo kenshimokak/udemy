@@ -5,12 +5,12 @@
       <div class="field form-group">
         <%= form.label :title, for: "article_title" %>
         <%= form.text_field :title, id: :article_title, class: "form-control" %>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <small id="emailHelp" class="form-text text-muted">Please write title into this field.</small>
       </div>
 
       <div class="field form-group">
         <%= form.label :description, for: "article_description" %>
-        <%= form.text_area :description, id: :article_description, class: "form-control" %>
+        <%= form.text_area :description, id: :article_description, class: "form-control", rows: 10 %>
       </div>
 
       <div class="actions form-group">

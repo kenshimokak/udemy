@@ -21,12 +21,13 @@
         <%= user.email %>
       </div> 
     </div>
+    <% if logged_in? && current_user == user %>
       <div class="card-footer">
         <%= link_to 'Show', user, class: "btn btn-sm btn-info" %>
         <%= link_to 'Edit', edit_user_path(user), class: "btn btn-sm btn-primary" %>
-        <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>    
         <div class="float-right text-muted"><%= pluralize(user.articles.count, "article") if user.articles.any? %></div>  
       </div>    
+    <% end %>
   </div> <br>
 <% end %>
 

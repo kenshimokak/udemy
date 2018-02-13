@@ -15,10 +15,10 @@
   	<strong>Email:</strong>
   	<%= @user.email %>
   </p>  
-	
-	<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-sm btn-primary" %> 
-	<%= link_to 'Back', users_path, class: "btn btn-sm btn-info" %>  
-	<%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>	
+	<% if logged_in? && current_user == @user %>
+  	<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-sm btn-primary" %> 
+  	<%= link_to 'Back', users_path, class: "btn btn-sm btn-info" %>  	
+  <% end %>
 </div>
 
 <% if @user.articles.any? %>
