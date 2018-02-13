@@ -1,6 +1,6 @@
 <%= render 'shared/notice' %>
 
-<%= link_to 'Create User', new_user_path, class: "btn btn-sm btn-success" %>
+<%= link_to 'Create User', new_user_path, class: "btn btn-sm btn-success" if current_user.admin? %>
 
 <h1>Lists of Users</h1>
 
@@ -21,10 +21,11 @@
         <%= user.email %>
       </div> 
     </div>
-    <% if logged_in? && current_user == user %>
+    <% if logged_in? && current_user.admin? %>
       <div class="card-footer">
         <%= link_to 'Show', user, class: "btn btn-sm btn-info" %>
         <%= link_to 'Edit', edit_user_path(user), class: "btn btn-sm btn-primary" %>
+        <%= link_to 'Delete', user_path(user), method: :delete, data: { confirm: "Are you sure you want delete the user and their articles?" }, class: "btn btn-sm btn-danger" %>
         <div class="float-right text-muted"><%= pluralize(user.articles.count, "article") if user.articles.any? %></div>  
       </div>    
     <% end %>

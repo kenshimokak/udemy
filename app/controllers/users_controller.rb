@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_admin, only: [:destroy]
 
   # GET /users
   # GET /users.json
@@ -59,7 +60,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'User and all of articles whiche created by user was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,9 +77,17 @@ class UsersController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @user
+      if current_user != @user and !current_user.admin?
         flash[:notice] = "You can only do actions your account"
         redirect_back fallback_location: root_path
       end
     end
+
+    def require_admin
+      if logged_in? and !current_user.admin?
+        flash[:notice] = "You Can't do this action !"
+        redirect_back fallback_location: root_path
+      end
+    end    
+
 end

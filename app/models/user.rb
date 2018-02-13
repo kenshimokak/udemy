@@ -1,6 +1,6 @@
 class User < ApplicationRecord
+	has_many :articles, dependent: :destroy
 	has_many :comments
-	has_many :articles
 	
 	before_save :dowancase_fields
 
@@ -20,5 +20,4 @@ class User < ApplicationRecord
 			self.username.downcase!
 			self.email.downcase!
 		end
-
 end

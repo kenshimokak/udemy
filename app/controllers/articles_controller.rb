@@ -76,7 +76,7 @@ class ArticlesController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @article.user
+      if current_user != @article.user and !current_user.admin?
         flash[:notice] = "You can only do action own page!"
         redirect_back fallback_location: root_path
       end
