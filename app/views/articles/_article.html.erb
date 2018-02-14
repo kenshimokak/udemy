@@ -11,6 +11,11 @@
             Last updated: <%= time_ago_in_words(article.updated_at) %> ago
           </small> 
           </p>
+          <p>
+            <% if article.categories.any? %>
+              Category: <%= render article.categories %>
+            <% end %>
+          </p>
           <% if logged_in? && (current_user == article.user || current_user.admin?) %>
           <p>
             <%= link_to 'Show', article, class: "btn btn-sm btn-info" %>          

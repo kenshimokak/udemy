@@ -16,6 +16,9 @@
   <p class="lead">
   	<%= simple_format(@article.description.capitalize) %>  
   </p>  
+  <% if @article.categories.any? %>
+    <p>Category: <%= render @article.categories %> </p>
+  <% end %>
 	<% if logged_in? && (current_user == @article.user || current_user.admin?) %>
 	<%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-primary" %> 
 	<%= link_to 'Back', articles_path, class: "btn btn-sm btn-info" %>  

@@ -13,6 +13,12 @@
         <%= form.text_area :description, id: :article_description, class: "form-control", rows: 10 %>
       </div>
 
+      <div class="form-check form-check-inline">
+        <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+            <% cb.label(class: "form-check-label mr-2 mb-2") { cb.check_box(class: "form-check-input") + cb.text } %>
+        <% end %>
+      </div>
+
       <div class="actions form-group">
         <%= form.submit class: "btn btn-primary" %>
       </div>

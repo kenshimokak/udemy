@@ -1,0 +1,32 @@
+<%= render 'shared/notice' %>
+
+
+<h1>Items</h1>
+
+<p><%= link_to "Create Category", new_category_path, class: "btn btn-sm btn-success" if is_admin? %></p>
+
+<%= will_paginate %>
+
+    <% @categories.each do |item| %>
+
+      <div class="card w-100">
+        <div class="card-body">
+          <h4 class="card-title text-primary"><%= link_to item.name.capitalize, category_path(item) %></h4>
+          <p>
+            <small><%= pluralize(item.articles.count, "article") %></small>
+          </p>
+          <% if is_admin? %>
+          <p>
+            <%= link_to 'Show', category_path(item), class: "btn btn-sm btn-info" %>          
+            <%= link_to 'Edit', edit_category_path(item), class: "btn btn-sm btn-success" %>
+            <%= link_to 'Delete', category_path(item), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>          
+          </p>
+          <% end %>
+        </div>
+      </div>    
+      <br/>
+    <% end %>
+
+
+<%= will_paginate %>
+

@@ -1,0 +1,9 @@
+<%= render 'shared/notice' %>
+
+
+<h1>Categories</h1>
+
+<%= will_paginate @category_articles %>
+<%= render 'articles/article', obj: @category_articles %>
+<%= will_paginate @category_articles %>
+
