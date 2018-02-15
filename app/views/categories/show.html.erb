@@ -2,7 +2,7 @@
 
 
 <h1>Categories</h1>
-
+<%= 'This category have not any article yet' if !@category_articles.any? %>
 <%= will_paginate @category_articles %>
 <%= render 'articles/article', obj: @category_articles %>
 <%= will_paginate @category_articles %>

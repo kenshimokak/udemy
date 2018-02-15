@@ -30,7 +30,7 @@
           <%= link_to 'All Categories', categories_path, class: "dropdown-item" %>
           <% Category.all.each do |item| %>
           <div class="dropdown-divider"></div>
-            <%= link_to item.name, category_path(item), class: "dropdown-item" %>
+            <%= link_to item.name.capitalize, category_path(item), class: "dropdown-item" %>
           <% end %>
         </div>
       </li>      
