@@ -1,8 +1,13 @@
 class User < ApplicationRecord
 	has_many :articles, dependent: :destroy
 	has_many :comments
+
+	has_many :friendships
+ 	has_many :friends, through: :friendships
 	
 	before_save :dowancase_fields
+
+	validates :full_name, presence: true
 
 	validates :username, presence: true,
 			  uniqueness: { case_sensitive: false },

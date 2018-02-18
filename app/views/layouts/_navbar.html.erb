@@ -41,7 +41,9 @@
             <%= link_to "Profile #{'Admin' if current_user.admin?}", user_path(current_user), class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
-            <div class="dropdown-divider"></div>            
+            <div class="dropdown-divider"></div>       
+            <%= link_to "My Friends", my_friends_path, class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>                          
             <%= link_to 'Log out', logout_path, method: :delete, class: "dropdown-item" %>
           </div>                     
         <% end %>
