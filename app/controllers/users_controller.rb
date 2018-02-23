@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy, :my_friends]
   before_action :require_admin, only: [:destroy]
 
   # GET /users
@@ -67,6 +67,32 @@ class UsersController < ApplicationController
 
   def my_friends
     @friendships = current_user.friends
+  end
+
+  def search
+    if params[:search_param].blank?
+      flash.now[:notice] = 'Your field can not be blank!'
+    elsif params[:search_param].length < 4
+      flash.now[:notice] = "Word can't be lower than 4 character"
+    else
+      @users = User.search(params[:search_param])    
+      @users = current_user.except_current_user(@users)
+      flash.now[:notice] = 'You entred is not exists !' if @users.blank?              
+    end    
+    respond_to do |format|
+      format.js { render partial: 'friends/result' }      
+    end
+  end
+
+  def add_friend
+    @friend = User.find(params[:friend])
+    current_user.friendships.build(friend_id: @friend.id)
+    if current_user.save
+      flash[:notice] = "Friend was successfully added"
+    else
+      flash[:notice] = "There was something wrong with the friend request"
+    end
+    redirect_to my_friends_path
   end
 
   private
